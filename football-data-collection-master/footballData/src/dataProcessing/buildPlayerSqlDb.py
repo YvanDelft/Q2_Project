@@ -6,12 +6,14 @@ import xml.etree.ElementTree as ET
 import collections
 from datetime import datetime
 from datetime import timedelta
+import parser
+from dateutil.parser import *
 from time import strptime
 import time
 import operator
 import sys
 import string
-from dateutil.parser import parse
+
 #
 #Player files to work with
 playersFileDirectory = 'D:\\OneDrive\\Projects\\BettingSerivce\\FootballDataCollection\\footballData\\DATA\\match_error.txt\\players\\'
