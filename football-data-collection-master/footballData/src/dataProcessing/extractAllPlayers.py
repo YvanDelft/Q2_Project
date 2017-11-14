@@ -11,7 +11,7 @@ matchDirectory = os.getcwd() + '..\\..\\..\\footballData\\matches\\'
 playersListDirectory = os.getcwd() + '..\\..\\..\\DATA\\players_list\\'
 count = 0
 playersDict = collections.OrderedDict()
-print "Player extract started..."
+print("Player extract started...")
 for (dirname, dirs, files) in os.walk(matchDirectory):
     for filename in files:
         if filename.endswith('.xml'):
@@ -60,7 +60,7 @@ for (dirname, dirs, files) in os.walk(matchDirectory):
                         playersDict[playerAwayId] = playerAwayDict
                     
             except:
-                print 'Error with file: ' + thefile
+                print('Error with file: ' + thefile)
                 
             count = count + 1 
 
@@ -74,7 +74,7 @@ with open(playersListDirectory + "1_players_list_all.txt","w+") as f:
             club_string = club_string + ',' + club
         player_with_club = player_and_name + club_string + '\n'
         player_with_club = player_with_club.encode('utf-8')
-        f.write(player_with_club)
+        f.write(str(player_with_club))
 
-print 'Files:', count
-print 'Players:', len(playersDict)
+print('Files:', count)
+print('Players:', len(playersDict))

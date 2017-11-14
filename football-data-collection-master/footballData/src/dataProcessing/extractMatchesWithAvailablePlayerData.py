@@ -40,7 +40,7 @@ existingPlayersFileDict = collections.OrderedDict()
 missingPlayersDict = dict()
 missingPlayerIdDict = dict()
 
-print "Player lookup started..."
+print("Player lookup started...")
 for (dirname, dirs, files) in os.walk(playersFileDirectory):
     for filename in files:
         if filename.endswith('.xml'):
@@ -48,7 +48,7 @@ for (dirname, dirs, files) in os.walk(playersFileDirectory):
             playerMatchId = int(filename[underscore[0]+1:underscore[1]])
             existingPlayersFileDict[playerMatchId] = filename
 
-print "Match lookup started..."
+print("Match lookup started...")
 for (dirname, dirs, files) in os.walk(matchDirectory):
     for filename in files:
         if filename.endswith('.xml'):
@@ -76,7 +76,7 @@ for (dirname, dirs, files) in os.walk(matchDirectory):
                 playerAwayFiles = list()
                
                 #Squad parsing
-                for i in range(0,11):
+                for i in range(0, 11):
                     playerHomeId = int(lstHomeId[i].text)
                     playerAwayId = int(lstAwayId[i].text)
                     playerHome = lstHome[i].text
@@ -143,7 +143,7 @@ for (dirname, dirs, files) in os.walk(matchDirectory):
                             try:
                                 os.makedirs(os.path.dirname(outputFileName))
                             except OSError as exc: # Guard against race condition
-                                print 'Cannot output match file ' + outputFileName
+                                print('Cannot output match file ' + outputFileName)
                         outputFile = open(outputFileName,'w')
                         outputFile.write(xmlstr)
                         outputFile.write('<fifaStats>' + fifaStats + '</fifaStats>')
@@ -151,10 +151,10 @@ for (dirname, dirs, files) in os.walk(matchDirectory):
                     
             except:
                 e = sys.exc_info()[0]
-                print 'Error on line {}'.format(sys.exc_info()[-1].tb_lineno)
-                print 'Error with file: ' + thefile
+                print('Error on line {}'.format(sys.exc_info()[-1].tb_lineno))
+                print('Error with file: ' + thefile)
                 
-            print 'Found ' + str(len(validMatch)) + ' valid match files'
+            print('Found ' + str(len(validMatch)) + ' valid match files')
 
 
 #Extract missing players
@@ -165,7 +165,7 @@ for x in sorted_x[-missingPlayerExtractSize:]:
     playerId = missingPlayerIdDict[x[0]]
 
     outputFile.write(str(playerId) + ',' + str(x[0]) + ',' + str(occurence) + '\n')
-    print str(playerId) + ',' + str(x[0]) + ',' + str(occurence)
+    print(str(playerId) + ',' + str(x[0]) + ',' + str(occurence))
 
-print 'Extracted ' + str(missingPlayerExtractSize) + ' missing players'
+print('Extracted ' + str(missingPlayerExtractSize) + ' missing players')
 outputFile.close()

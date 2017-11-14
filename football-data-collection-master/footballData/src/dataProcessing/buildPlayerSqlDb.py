@@ -12,7 +12,7 @@ import operator
 import sys
 import string
 from dateutil.parser import parse
-
+#
 #Player files to work with
 playersFileDirectory = 'D:\\OneDrive\\Projects\\BettingSerivce\\FootballDataCollection\\footballData\\DATA\\match_error.txt\\players\\'
 db = 'D:\\OneDrive\\Projects\\BettingSerivce\\FootballDataCollection\\footballData\\DATA\\database.sqlite'
@@ -120,7 +120,7 @@ def savePlayer(filename,count):
         try:
             cur.execute('''INSERT OR IGNORE INTO Player (player_api_id,player_fifa_api_id,player_name,birthday,height,weight) 
                 VALUES ( ?, ?, ?, ?, ?, ? )''', ( player_api_id, player_fifa_api_id,player_name,birthday,height,weight) )
-            print 'Inserted Player #' + str(count) +  ' - ' +filename
+            print('Inserted Player #' + str(count) +  ' - ' +filename)
             conn.commit()
 
             cur.execute('SELECT id FROM Player WHERE player_api_id = ? ', (player_api_id, ))
@@ -190,7 +190,7 @@ def savePlayer(filename,count):
     return count
 
 
-print "Player lookup started..."
+print("Player lookup started...")
 count = 0
 for (dirname, dirs, files) in os.walk(playersFileDirectory):
     for filename in files:
