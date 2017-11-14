@@ -1,9 +1,9 @@
 import json
 import sqlite3
 import os
-import re 
+import re
 import xml.etree.ElementTree as ET
-import collections 
+import collections
 from datetime import datetime
 from datetime import timedelta
 from time import strptime
@@ -93,15 +93,15 @@ longStatsField = ['Crossing',
 def printError(player_name,player_api_id,player_fifa_id,):
     outputFile = open(errorFile,'a')
     url = 'http://sofifa.com/player/' + str(player_fifa_id)
-    outputFile.write(str(player_api_id) + ',' + player_name + ',' + url + '\n')  
-            
+    outputFile.write(str(player_api_id) + ',' + player_name + ',' + url + '\n')
+
 def savePlayer(filename,count):
     underscore = [m.start() for m in re.finditer('_', filename)]
     player_name = filename[:underscore[0]]
     player_api_id = int(filename[underscore[0]+1:underscore[1]])
     player_fifa_api_id = int(filename[underscore[1]+1:-4])
     filePath = playersFileDirectory + filename
-    
+
     playerStats = ''
     with open(filePath,'r') as file_Player:
         count += 1
@@ -116,25 +116,25 @@ def savePlayer(filename,count):
         birthday = parse(birthday)
         height = float(parsedXMLGeneralStats.find('height').text)
         weight = float(parsedXMLGeneralStats.find('weight').text)
-        
+
         try:
             cur.execute('''INSERT OR IGNORE INTO Player (player_api_id,player_fifa_api_id,player_name,birthday,height,weight) 
                 VALUES ( ?, ?, ?, ?, ?, ? )''', ( player_api_id, player_fifa_api_id,player_name,birthday,height,weight) )
             print 'Inserted Player #' + str(count) +  ' - ' +filename
             conn.commit()
-            
+
             cur.execute('SELECT id FROM Player WHERE player_api_id = ? ', (player_api_id, ))
             player_id = cur.fetchone()[0]
         except:
             printError(player_name,player_api_id,player_fifa_api_id)
             return count
-        
+
         allStatsNodes = re.findall('<Timestamp>([0-9]+)</Timestamp>',playerStats)
         for node in allStatsNodes:
             try:
                 deltaDays = int(node) - startIntFifa
                 datePlayerStatUpdate = startDateFifa + timedelta(days=deltaDays)
-                
+
                 start = playerStats.find('<Timestamp>' + node + '</Timestamp>') + len ('<Timestamp>' + node + '</Timestamp>')
                 detailedStats = playerStats[start:]
                 end = detailedStats.find('</value>')
@@ -145,12 +145,12 @@ def savePlayer(filename,count):
             except:
                 printError(player_name,player_api_id,player_fifa_api_id)
                 return count
-            
+
             cur.execute('''INSERT OR IGNORE INTO Player_Stats (player_api_id,player_fifa_api_id,date_stat) 
             VALUES ( ?, ?, ? )''', ( player_api_id, player_fifa_api_id, datePlayerStatUpdate) )
             cur.execute('SELECT id FROM Player_Stats WHERE player_api_id = ? AND date_stat = ?', (player_api_id, datePlayerStatUpdate, ))
             player_stats_id = cur.fetchone()[0]
-        
+
             xmlLength = len(parsedXMLDetailedStats)
             if xmlLength == 31:
                 detailedStatsField = shortStatsField
@@ -159,7 +159,7 @@ def savePlayer(filename,count):
             else:
                 printError(player_name,player_api_id,player_fifa_api_id)
                 return count
-        
+
             field_count = 0
             for field in generalStatsField + detailedStatsField:
                 field = "_".join(field.lower().split())
@@ -173,7 +173,7 @@ def savePlayer(filename,count):
                 except:
                     cur.execute('Update Player_Stats SET ' + field + '=? WHERE id=?', (None,player_stats_id))
                 field_count += 1
-                
+
             for field in featureField:
                 field = "_".join(field.lower().split())
                 try:
