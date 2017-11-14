@@ -44,8 +44,8 @@
       <file leaf-file-name="buildLearningFile.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/football-data-collection-master/footballData/src/dataProcessing/buildLearningFile.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1989">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="238">
+              <caret line="227" column="12" lean-forward="true" selection-start-line="227" selection-start-column="12" selection-end-line="227" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -89,6 +89,12 @@
               <item name="minorproject" type="b2602c69:ProjectViewProjectNode" />
               <item name="minorproject" type="462c0819:PsiDirectoryNode" />
               <item name="football-data-collection-master" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="minorproject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="minorproject" type="462c0819:PsiDirectoryNode" />
+              <item name="football-data-collection-master" type="462c0819:PsiDirectoryNode" />
+              <item name="footballData" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -169,8 +175,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/football-data-collection-master/footballData/src/dataProcessing/buildLearningFile.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1989">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="238">
+          <caret line="227" column="12" lean-forward="true" selection-start-line="227" selection-start-column="12" selection-end-line="227" selection-end-column="12" />
           <folding />
         </state>
       </provider>
