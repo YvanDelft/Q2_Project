@@ -14,7 +14,7 @@ allPayersFile = set()
 allPlayers = set()
 playersDict = dict()
 
-print "Player extract started..."
+print("Player extract started...")
 for (dirname, dirs, files) in os.walk(playersFileDirectory):
     for filename in files:
         if filename.endswith('.xml'):
@@ -23,7 +23,7 @@ for (dirname, dirs, files) in os.walk(playersFileDirectory):
             allPayersFile.add(matchId)
             count += 1
             
-print "Player file count: " + str(count)
+print("Player file count: " + str(count))
 
 count = 0
 
@@ -40,7 +40,7 @@ with open(allPlayersFile,"r") as f:
         playersDict[matchId] = playerName
         count += 1
 
-print "Players in list count: " + str(count)
+print("Players in list count: " + str(count))
 
 with open(output,"w") as f:
     for key in playersDict.keys():
