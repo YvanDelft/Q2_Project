@@ -8,8 +8,15 @@ solver = "saga"
 n_samples = 1000
 algorithm_parameters = "solver='saga', multi_class='multinomial'"
 
-x_data = 1
-y_data = 1
+x = 1
+y = 1
+
+x_train =
+y_train =
+x_test =
+y_test =
+
+scaler = StandardScaler()
 
 
 clf = LogisticRegression(algorithm_parameters)
