@@ -1,4 +1,5 @@
 from DatabaseExtractor import read_data
+from sklearn.linear_model import LogisticRegression
 import sklearn
 from OutputGenerator import *
 
@@ -21,8 +22,8 @@ william_hill = "WHH, WHD, WHA"
 solver = "saga"
 
 n_samples = 1000
+
 print(data)
-print(process_output())
 
 #print(process_betting_odds(bet365))
 #print(process_betting_odds(william_hill))
@@ -31,3 +32,12 @@ print(process_output())
 #x_data =
 #y_data =
 
+algorithm_parameters = "solver='saga', multi_class='multinomial'"
+
+x_data = 1
+y_data = 1
+
+
+
+clf = LogisticRegression(algorithm_parameters)
+clf.fit(x_data, y_data)
