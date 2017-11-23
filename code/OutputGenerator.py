@@ -6,11 +6,11 @@ def process_output():
     new_output = []
     for i in data:
         if i[0] > i[1]:
-            new_output.append((1, 0, 0))
+            new_output.append(0)
         elif i[0] < i[1]:
-            new_output.append((0, 0, 1))
+            new_output.append(2)
         else:
-            new_output.append((0, 1, 0))
+            new_output.append(1)
     return new_output
 
 

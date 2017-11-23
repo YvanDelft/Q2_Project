@@ -1,0 +1,3 @@
+The database is too big too be in the Github repository, so that's why we have a zip of it.
+Before running the code:
+-First unzip the "databaseD.zip" file in the "code" map
