@@ -9,7 +9,7 @@ from sklearn.svm import LinearSVC
 
 
 # Read in the data of the match and of the players
-x2 = read_data("Match", "home_player_1")
+x2 = read_data("Match", "home_player_1")[:1000]
 p1_rating = stats_from_id(x2, "overall_rating", 50)
 print(p1_rating)
 print(len(p1_rating))
